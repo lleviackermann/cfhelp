@@ -75,7 +75,11 @@ To run the project commands from anywhere on your system, add the project direct
         source ~/.bashrc
     ```
 
-Now, after doing all this we can use our command line funtions from anywhere in your laptop.
+Now, after doing all this to check if it is installed correctly or not, run the following command anywhere on computer:
+```bash
+    cfhelp
+```
+If you see the message `cfhelp installed successfully` that means it is installed successfully otherwise repeat the whole process again.
 
 
 ## **Usage**
