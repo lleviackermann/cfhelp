@@ -1,0 +1,34 @@
+#!/bin/bash
+
+current_dir=$(dirname "$(readlink -f "$0")")
+check_venv() {
+    if [ -f "$1/bin/activate" ] || [ -f "$1/Scripts/activate" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Search for virtual environment in the current directory and its subdirectories
+venv_found=false
+for dir in $(find $current_dir -type d); do
+    if check_venv "$dir"; then
+        venv_found=true
+        break
+    fi
+done
+
+venv_path="$current_dir/bin/activate"
+venv_flag=true
+if [ "$venv_found" = false ]; then
+    python3 -m venv ./
+    source $venv_path
+    venv_flag=false
+    pip install requirements.txt
+fi
+
+main_file_path="$current_dir/main.py"
+if $venv_flag; then
+    source $venv_path
+fi
+python3 $main_file_path "$@"
