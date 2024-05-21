@@ -2,7 +2,7 @@ import json
 import subprocess
 import os
 from print_texts import display_error_message, display_success_message, display_processing_message, display_information, display_purple_text
-from add_problem import is_problemId_correct, get_contestId_problemNumber
+from add_problem import get_contestId_problemNumber
 
 CURRENT_FILE_PATH = os.path.realpath(__file__)
 CURRENT_DIR = os.path.dirname(CURRENT_FILE_PATH)
@@ -47,12 +47,6 @@ def compare_outputs(actual_output, expected_output):
 def test_solution_file(solution_file : str):
     problem_id = solution_file.split(".")[0]
     contest_id, problem_number = get_contestId_problemNumber(problem_id)
-    
-    if not is_problemId_correct(contest_id, problem_number):
-        display_error_message(f"{solution_file} is not in proper format!")
-        return 
-    else:
-        display_success_message(f"{solution_file} is solution for the problem {problem_id}!!\n")
         
     display_processing_message(f"..........Checking if testcases for {problem_id} are downloaded locally or not.........")
     sample_tests_json_dir_path = os.path.join(CURRENT_DIR, "sample_tests")

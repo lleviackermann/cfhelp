@@ -17,7 +17,9 @@ if __name__ == "__main__":
         test_solution_file(sys.argv[2])
     elif len(sys.argv) == 2 and sys.argv[1] == "update-compilers":
         update_compilers_values()
-    elif len(sys.argv) >= 3 and sys.argv[1] == "submit":
-        handle_problem_submit_arguments(sys.argv)
     elif len(sys.argv) == 3 and sys.argv[1] == "get" and sys.argv[2] == "compiler-details":
         get_compiler_details()
+    elif len(sys.argv) >= 3 and sys.argv[1] == "submit":
+        handle_problem_submit_arguments(sys.argv)
+    else:
+        display_error_message(f"Please provide proper command line arguments. Check our readme for all the details!")
