@@ -24,7 +24,8 @@ def check_is_uppercase_alphabet(char):
     return False
 
 def codeforces_login(driver : WebDriver):
-    if USERNAME and PASSWORD and USERNAME.strip() != "" and PASSWORD.strip() != "":
+    
+    if not USERNAME or not PASSWORD or USERNAME.strip() == "" or PASSWORD.strip() == "":
         display_error_message("Please make sure you have included username and password into .env sample. Please see the .sample.env file.")
         return None
     try:

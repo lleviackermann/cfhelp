@@ -72,7 +72,7 @@ def handle_problem_submit_arguments(args: list):
 
 def submit_problem(solution_file_path, problemId, compiler_value, contest_id, problem_number):
     current_problem_url = PROBLEMS_URL + contest_id + "/" + problem_number
-    driver = get_head_driver()
+    driver = get_headless_driver()
     display_processing_message(f"\n..........Submitting solution..........")
     driver = codeforces_login(driver)
     if driver == None:
